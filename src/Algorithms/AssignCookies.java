@@ -40,19 +40,21 @@ import java.util.Arrays;
 public class AssignCookies {
 
     public int findContentChildren(int[] g, int[] s) {
-        int gLen = g.length;
-        int sLen = s.length;
+
         Arrays.sort(g);
         Arrays.sort(s);
-        int gi = 0;
-        int si = 0;
-        while (si < sLen) {
-            if (s[si] >= g[gi]) {
-                gi++;
-                if (gi == gLen) break;
+        int i = 0;
+        int j = 0;
+        int count = 0;
+        while (i < g.length && j < s.length) {
+            if (g[i] <= s[j]) {
+                count++;
+                i++;
+                j++;
+            } else {
+                j++;
             }
-            si++;
         }
-        return gi;
+        return count;
     }
 }
